@@ -16,4 +16,4 @@ dist
 .eslintcache
 
 # VITE
-# .vite
+.vite
