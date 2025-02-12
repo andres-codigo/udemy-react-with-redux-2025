@@ -61,7 +61,7 @@ export default [
 			],
 			'no-unused-vars': 'warn',
 			'react/prop-types': 'off',
-			'no-console': ['error', { allow: ['warn', 'error'] }],
+			'no-console': ['error', { allow: ['warn', 'error', 'log'] }],
 			'no-debugger': 'warn',
 			'prettier/prettier': 'error',
 			quotes: ['error', 'single'],
