@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "npm run lint:js && vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "server": "json-server --port 3001 --watch db.json --host 127.0.0.1",
     "lint:js": "eslint src --config eslint.config.mjs --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --fix --config eslint.config.mjs --report-unused-disable-directives --max-warnings 0 && prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,json,md}'",
     "lint:watch": "chokidar 'src/**/*.{js,jsx,ts,tsx}' -c 'eslint src --config eslint.config.mjs --report-unused-disable-directives --max-warnings 0'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,json,md}'"
   },
   "dependencies": {
+    "axios": "^1.7.9",
+    "json-server": "^0.17.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
