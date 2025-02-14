@@ -1,19 +1,21 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useCallback } from 'react';
 import axios from 'axios';
+
+import { API_URL } from '../../config';
 
 const BooksContext = createContext();
 
 function Provider({ children }) {
 	const [books, setBooks] = useState([]);
 
-	const fetchBooks = async () => {
-		const response = await axios.get('http://localhost:3001/books');
+	const fetchBooks = useCallback(async () => {
+		const response = await axios.get(API_URL);
 
 		setBooks(response.data);
-	};
+	}, []);
 
 	const editBookById = async (id, newTitle) => {
-		const response = await axios.put(`http://localhost:3001/books/${id}`, {
+		const response = await axios.put(`${API_URL}/${id}`, {
 			title: newTitle,
 		});
 
@@ -29,7 +31,7 @@ function Provider({ children }) {
 	};
 
 	const deleteBookById = async (id) => {
-		await axios.delete(`http://localhost:3001/books/${id}`);
+		await axios.delete(`${API_URL}/${id}`);
 
 		const updatedBooks = books.filter((book) => {
 			return book.id !== id;
@@ -39,7 +41,7 @@ function Provider({ children }) {
 	};
 
 	const createBook = async (title) => {
-		const response = await axios.post('http://localhost:3001/books', {
+		const response = await axios.post(API_URL, {
 			title,
 		});
 
