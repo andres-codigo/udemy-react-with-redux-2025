@@ -1,6 +1,7 @@
 import { defineConfig, transformWithEsbuild } from 'vite';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint2';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
 	server: {
@@ -12,6 +13,7 @@ export default defineConfig({
 		open: true,
 	},
 	plugins: [
+		tailwindcss(),
 		{
 			name: 'treat-js-files-as-jsx',
 			async transform(code, id) {
